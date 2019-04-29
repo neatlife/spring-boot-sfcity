@@ -2,7 +2,9 @@ package com.github.neatlife;
 
 import com.github.neatlife.constant.ApiUrlConstant;
 import com.github.neatlife.request.CreateOrderRequest;
+import com.github.neatlife.request.PreCreateOrderRequest;
 import com.github.neatlife.response.CreateOrderResponse;
+import com.github.neatlife.response.PreCreateOrderResponse;
 import com.github.neatlife.response.Response;
 import com.github.neatlife.util.HttpUtil;
 import com.github.neatlife.util.JsonUtil;
@@ -34,5 +36,17 @@ public class SfClient {
                 createOrderRequest
         );
         return JsonUtil.toObject(response.getResult(), CreateOrderResponse.class);
+    }
+
+    public PreCreateOrderResponse preCreateOrder(CreateOrderRequest createOrderRequest) {
+        createOrderRequest.setDevId(developerId);
+        createOrderRequest.setShopId(shopId);
+        Response response = HttpUtil.post(
+                developerId,
+                developerKey,
+                ApiUrlConstant.getPreCreateOrderUrl(),
+                createOrderRequest
+        );
+        return JsonUtil.toObject(response.getResult(), PreCreateOrderResponse.class);
     }
 }

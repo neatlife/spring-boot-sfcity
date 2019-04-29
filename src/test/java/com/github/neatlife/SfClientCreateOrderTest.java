@@ -3,6 +3,7 @@ package com.github.neatlife;
 import com.github.neatlife.constant.ApiUrlConstant;
 import com.github.neatlife.request.*;
 import com.github.neatlife.response.CreateOrderResponse;
+import com.github.neatlife.response.PreCreateOrderResponse;
 import com.github.neatlife.util.DateUtil;
 import org.junit.Assert;
 import org.junit.Test;
@@ -24,7 +25,7 @@ import java.util.stream.Stream;
 @ContextConfiguration(classes = {AutoConfiguration.class, ApiUrlConstant.class})
 @TestPropertySource("classpath:application.properties")
 @ProfileValueSourceConfiguration
-public class SfClientTest {
+public class SfClientCreateOrderTest {
 
     @Autowired
     SfClient sfClient;
